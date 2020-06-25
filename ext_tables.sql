@@ -23,6 +23,8 @@ CREATE TABLE sys_language (
 #
 CREATE TABLE tt_content (
     teaser text,
+    aspect_ratio varchar(255) DEFAULT '1.3333333333333' NOT NULL,
+    items_per_page int(11) unsigned DEFAULT '10',
     readmore_label varchar(255) DEFAULT '' NOT NULL,
     quote_source varchar(255) DEFAULT '' NOT NULL,
     quote_link varchar(1024) DEFAULT '' NOT NULL,
@@ -109,6 +111,7 @@ CREATE TABLE tx_bootstrappackage_carousel_item (
     item_type varchar(255) DEFAULT '' NOT NULL,
     header varchar(255) DEFAULT '' NOT NULL,
     header_layout tinyint(3) unsigned DEFAULT '1' NOT NULL,
+    header_position varchar(255) DEFAULT 'center' NOT NULL,
     header_class varchar(255) DEFAULT '' NOT NULL,
     subheader varchar(255) DEFAULT '' NOT NULL,
     subheader_layout tinyint(3) unsigned DEFAULT '2' NOT NULL,
@@ -210,6 +213,8 @@ CREATE TABLE tx_bootstrappackage_icon_group_item (
     tt_content int(11) unsigned DEFAULT '0',
     header varchar(255) DEFAULT '' NOT NULL,
     subheader varchar(255) DEFAULT '' NOT NULL,
+    bodytext text,
+    link varchar(1024) DEFAULT '' NOT NULL,
     icon_file int(11) unsigned DEFAULT '0',
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -297,7 +302,7 @@ CREATE TABLE tx_bootstrappackage_timeline_item (
     pid int(11) DEFAULT '0' NOT NULL,
 
     tt_content int(11) unsigned DEFAULT '0',
-    date date,
+    date datetime,
     header varchar(255) DEFAULT '' NOT NULL,
     bodytext text,
     icon_file int(11) unsigned DEFAULT '0',
@@ -306,8 +311,8 @@ CREATE TABLE tx_bootstrappackage_timeline_item (
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,
     crdate int(11) unsigned DEFAULT '0' NOT NULL,
     cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
-    deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
-    hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+    deleted smallint unsigned DEFAULT '0' NOT NULL,
+    hidden smallint unsigned DEFAULT '0' NOT NULL,
     starttime int(11) unsigned DEFAULT '0' NOT NULL,
     endtime int(11) unsigned DEFAULT '0' NOT NULL,
     sorting int(11) DEFAULT '0' NOT NULL,
